@@ -106,53 +106,53 @@
     </style>
 </head>
 <body>
-<header>
-    <nav>
-        <li>Home</li>
-        <li>About</li>
-        <li>Register</li>
-        <li>Contact Us</li>
-    </nav>
-</header>
-<div class="container">
-    <h2>Customer Registration</h2>
+    <header>
+        <nav>
+            <li>Home</li>
+            <li>About</li>
+            <li>Register</li>
+            <li>Contact Us</li>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Customer Registration</h2>
 
-    <div th:if="${param.success}" class="success-message">
-        Registration successful!
+        <div th:if="${param.success}" class="success-message">
+            Registration successful!
+        </div>
+
+        <form th:action="@{/register}" th:object="${customer}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" th:field="*{consumerName}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" th:field="*{address}" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" th:field="*{contactNo}" pattern="[0-9]{10}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:field="*{email}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="connType">Connection Type:</label>
+                <select id="connType" th:field="*{connType}" required>
+                    <option value="">Select Type</option>
+                    <option value="Domestic">Domestic</option>
+                    <option value="Commercial">Commercial</option>
+                </select>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
     </div>
-
-    <form th:action="@{/register}" th:object="${customer}" method="post">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" th:field="*{consumerName}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <textarea id="address" th:field="*{address}" rows="3" required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="contact">Contact Number:</label>
-            <input type="tel" id="contact" th:field="*{contactNo}" pattern="[0-9]{10}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" th:field="*{email}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="connType">Connection Type:</label>
-            <select id="connType" th:field="*{connType}" required>
-                <option value="">Select Type</option>
-                <option value="Domestic">Domestic</option>
-                <option value="Commercial">Commercial</option>
-            </select>
-        </div>
-
-        <button type="submit">Register</button>
-    </form>
-</div>
 </body>
 </html>
